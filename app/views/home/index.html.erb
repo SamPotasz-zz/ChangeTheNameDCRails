@@ -4,29 +4,12 @@
     </header>
     <div id="main" role="main">
     	
-    	<div class="topBanner">
-			<%= link_to image_tag( "rectBlack.png", :alt => "Change the Name, DC!", :id => "bannerLogo"), :controller => "home"  %>
-			<div id="bannerTabs">
-    			<a href="newsFeeds.html">Team News</a>
-    			<a href="shop.html">Shop</a>
-    		</div>
-    	</div>
-
+    	<%= render "shared/topBanner" %>
 		
     	<div id="bodyContent" class="mainContent">
 	    	<p>
-	    		For most Americans the days of overt and institutional racism where 
-	    		thought to have become a distant memory. At one time symbols like the 
-	    		"Black Sambo" and "Frito Bandito" were commonly accepted by mainstream America 
-	    		as playful marketing tools. That was the past, times have changed and America has 
-	    		supposedly grown up and away from such potent symbols of racism. However, for American 
-	    		Indians this practice continues. From the racially-derived "Washington Redskins" 
-	    		to the war-like "Florida Seminoles", American Indian mascots are found at the professional 
-	    		sports level as well as the high school and college levels. Far from honoring Native Americans, 
-	    		these mascots are a national insult, and represent the last vestiges of a time thought 
-	    		long-past when such stereotypes were commonplace. Just as "Sambo" served to perpetuate 
-	    		racism and bigotry toward the African-American community, these mascots and team names
-	    		 serve to keep Native Americans in a similar position. 	
+	    		For most Americans the days of overt and institutional racism where thought to have become a distant memory. At one time symbols like the 	    		"Black Sambo" and "Frito Bandito" were commonly accepted by mainstream America 	    		as playful marketing tools. That was the past, times have changed and America has 
+supposedly grown up and away from such potent symbols of racism. However, for American Indians this practice continues. From the racially-derived "Washington Redskins" to the war-like "Florida Seminoles", American Indian mascots are found at the professional sports level as well as the high school and college levels. Far from honoring Native Americans, these mascots are a national insult, and represent the last vestiges of a time thought long-past when such stereotypes were commonplace. Just as "Sambo" served to perpetuate racism and bigotry toward the African-American community, these mascots and team names serve to keep Native Americans in a similar position. 	
 	    		 <br/>
 	    		 <a href="http://www.ncai.org/ncai/resource/documents/governance/NCAIposis.htm">
 	    		 --The National Congress of American Indians	
