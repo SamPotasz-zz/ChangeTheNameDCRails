@@ -8,6 +8,16 @@ class FeedsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @feeds }
     end
+
+  end
+  
+  #get feeds/admin
+  def admin
+    @feeds = Feed.all
+    respond_to do |format|
+      format.html #admin.html.erb
+      format.json { render json: @feeds }
+    end
   end
 
   # GET /feeds/1
