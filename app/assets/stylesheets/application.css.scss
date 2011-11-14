@@ -182,16 +182,15 @@ a:hover { color: #036; }
  */
 body{
 	background-color: $gold;
+	#mainContent{
+		font-size: 16px;
+		width: 550px;
+		margin: auto;
+	}
 }
 
 #main{
 	width: 100%;
-}
-
-div.mainContent{
-	font-size: 16px;
-	width: 550px;
-	margin: auto;
 }
 
 
