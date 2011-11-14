@@ -11,7 +11,11 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
+	<%= f.label :name, "Name" %> <%= f.text_field :name %> <br/>	
+	<%= f.label :url, "URL" %> <%= f.text_field :url %><br/>
+	<%= f.label :description, "Description" %> <%= f.text_field :description %><br/>
+
+  <div class="actions">	
+	<%= f.submit "Submit", :disable_with => 'Submiting...' %>
   </div>
 <% end %>

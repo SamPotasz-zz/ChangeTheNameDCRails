@@ -1,21 +1,11 @@
-<h1>Listing feeds</h1>
+<div id="allFeedContent">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Url</th>
-    <th>Description</th>
-  </tr>
+	<div id="feedLinks">
+		Choose Your Feed: 
+		<% @feeds.each do |feed| %>
+			<a> <%= feed.name %> </a>
+		<% end %>
+	</div>
+</div>
 
-<% @feeds.each do |feed| %>
-  <tr>
-    <td><%= link_to 'Show', feed %></td>
-    <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
-    <td><%= link_to 'Destroy', feed, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Feed', new_feed_path %>
+<%= link_to 'Feed Admin', feeds_admin_path %>

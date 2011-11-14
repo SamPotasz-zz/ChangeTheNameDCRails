@@ -1,0 +1,24 @@
+<%= form_for(@user) do |f| %>
+
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  	<%= f.label :first_name, "First Name:" %> <%= f.text_field :first_name %> <br/>	
+	<%= f.label :last_name, "Last Name:" %> <%= f.text_field :last_name %><br/>
+	<%= f.label :afillation, "How are you associated with the Redskins? A lifelong fan? A casual fan? A 3-time Super Bowl winning coach?" %> <br/>
+	<%= f.text_area :afillation %><br/>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
