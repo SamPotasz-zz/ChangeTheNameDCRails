@@ -1,0 +1,23 @@
+<%= form_for(@supporter) do |f| %>
+
+  <% if @supporter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@supporter.errors.count, "error") %> prohibited this supporter from being saved:</h2>
+
+      <ul>
+      <% @supporter.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  	<%= f.label :full_name, "Full Name:" %> <%= f.text_field :full_name %> <br/>	
+	<%= f.label :email, "E-Mail Address:" %> <%= f.text_field :email %><br/>
+	<%= f.label :affilation, "How are you associated with the Redskins? A lifelong fan? A casual fan? A 3-time Super Bowl winning coach?" %> <br/>
+	<%= f.text_area :affiliation %><br/>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

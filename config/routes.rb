@@ -1,7 +1,7 @@
 ChangeTheNameDC::Application.routes.draw do
   
 
-  resources :users
+  resources :supporters
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

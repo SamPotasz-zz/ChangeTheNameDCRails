@@ -1,0 +1,20 @@
+<h1> Supporters Admin </h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Affiliation</th>
+  </tr>
+
+<% @supporters.each do |supporter| %>
+  <tr>
+    <td><%= link_to 'Show', supporter %></td>
+    <td><%= link_to 'Edit', edit_supporter_path(supporter) %></td>
+    <td><%= link_to 'Destroy', supporter, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New supporter', new_supporter_path %>

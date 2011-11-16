@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h1> <%= @supporter.full_name %> </h1>
+
+<p>
+<%= @supporter.affiliation %>	
+</p>
+
+<%= @supporter.email %>
+
+<%= link_to 'Edit', edit_supporter_path(@supporter) %> |
+<%= link_to 'Back', supporters_path %>
