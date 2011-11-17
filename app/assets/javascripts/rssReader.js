@@ -36,7 +36,7 @@ function parseFeeds( feeds )
 	{
 		var entry = feeds.entries[i];
 		// Entry title
-		var title = entry.title.replace( "Redskins", REPLACING_WITH )  //scrub( entry.title );
+		var title = entry.title.replace( "Redskins", "*******" )  //scrub( entry.title );
 		var pubDate = entry.publishedDate;
 		//use the snippet length to determine where to place the expander link
 		var snippet = scrub( entry.contentSnippet );
@@ -60,7 +60,6 @@ function parseFeeds( feeds )
  
 		//put that feed content on the screen!
 		$('#feedContent').append($(html));
-                return true;
 	}
   	
   	// simple example, using all default options unless overridden globally
