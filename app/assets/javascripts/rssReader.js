@@ -1,8 +1,8 @@
 
-const REPLACING_WITH = "*******";
 
-function readFeed( feedIndex ) 
+function readFeed( url )
 {
+    /*
 	const FOOTBALL_INSIDER = 'http://feeds.washingtonpost.com/rss/rss_football-insider';
 	const HOGS_HAVEN = 'http://feeds.feedburner.com/sportsblogs/hogshaven';
 	const SPORTS_BOG = 'http://feeds.washingtonpost.com/rss/rss_dc-sports-bog';
@@ -11,6 +11,7 @@ function readFeed( feedIndex )
 	const ALL_FEEDS = [ FOOTBALL_INSIDER, HOGS_HAVEN, SPORTS_BOG, HARD_HITS ];
 	
 	var url = ALL_FEEDS[ feedIndex ];
+    */
 	
 	$.jGFeed( url, parseFeeds, 5 );
 };
@@ -59,6 +60,7 @@ function parseFeeds( feeds )
  
 		//put that feed content on the screen!
 		$('#feedContent').append($(html));
+                return true;
 	}
   	
   	// simple example, using all default options unless overridden globally
@@ -81,7 +83,7 @@ function parseFeeds( feeds )
  */
 function scrub( toScrub )
 {
-	var clean = toScrub.replace( "Redskins", REPLACING_WITH );
+	var clean = toScrub.replace( "Redskins", "*******" );
 	
 	if( toScrub.childNodes )
 	{

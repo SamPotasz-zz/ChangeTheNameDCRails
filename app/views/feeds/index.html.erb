@@ -1,11 +1,14 @@
-<div id="allFeedContent">
+<%= javascript_include_tag "rssReader" %>
 
-	<div id="feedLinks">
-		Choose Your Feed: 
-		<% @feeds.each do |feed| %>
-			<a> <%= feed.name %> </a>
-		<% end %>
-	</div>
+<div id="allFeedContent">
+    <div id="feedLinks">
+        Choose Your Feed:
+	<%= render @feeds %>
+    </div>
+
+    <div id="feedContent">
+        &nbsp;
+    </div>
 </div>
 
 <%= link_to 'Feed Admin', feeds_admin_path %>
