@@ -1,12 +1,29 @@
 <%= javascript_include_tag "rssReader", "jgfeed" %>
+<div id="feedIntro">
+    <p>
+        How much does the name "Redskins" mean to you? <br/>
+        Would you care about the team less if it were called something else? <br/>
+        Try out your own suggestions for a new team name and see how it feels. <br/>
+    </p>
+</div>
+
+
 
 <div id="allFeedContent">
-    <div id="feedLinks">
-        Choose Your Feed:
+
+    <div id="feedLinks" class="chooser">
+        First, choose your news source:
 	<%= render @feeds %>
     </div>
 
-    <div id="feedContent">
+    <div id="nameInputDiv" class="chooser">
+        Second, enter a new possible team name. <br/> I like The
+        <input id="teamNameInput" type='text' id='userInput' value='Hogs' />
+        <input type="button" onclick='changeName()' value='Change Text' />
+    </div>
+</div>
+
+    <div id="feedContent" >
         &nbsp;
     </div>
 </div>

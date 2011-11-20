@@ -1,20 +1,17 @@
-
+var currURL;
+var currName;
 
 function readFeed( url )
 {
-    /*
-	const FOOTBALL_INSIDER = 'http://feeds.washingtonpost.com/rss/rss_football-insider';
-	const HOGS_HAVEN = 'http://feeds.feedburner.com/sportsblogs/hogshaven';
-	const SPORTS_BOG = 'http://feeds.washingtonpost.com/rss/rss_dc-sports-bog';
-	const HARD_HITS = 'http://feeds.washingtonpost.com/rss/rss_hard-hits';
+    currURL = url;
 	
-	const ALL_FEEDS = [ FOOTBALL_INSIDER, HOGS_HAVEN, SPORTS_BOG, HARD_HITS ];
-	
-	var url = ALL_FEEDS[ feedIndex ];
-    */
-	
-	$.jGFeed( url, parseFeeds, 5 );
+    $.jGFeed( currURL, parseFeeds, 5 );
 };
+
+function changeName()
+{
+    $.jGFeed( currURL, parseFeeds, 5 );
+}
 
 /**
  * Takes in an array of feeds, which contain arrays of google feed API entries,
@@ -22,6 +19,8 @@ function readFeed( url )
  */
 function parseFeeds( feeds )
 {
+    var name = $("#teamNameInput")[ 0 ].value;
+
 	// Check for errors
 	if(!feeds) {
 		// there was an error
@@ -36,32 +35,38 @@ function parseFeeds( feeds )
 	{
 		var entry = feeds.entries[i];
 		// Entry title
-		var title = entry.title.replace( "Redskins", "*******" )  //scrub( entry.title );
+		var title = entry.title.replace( "Redskins", name );  //scrub( entry.title );
 		var pubDate = entry.publishedDate;
 		//use the snippet length to determine where to place the expander link
-		var snippet = scrub( entry.contentSnippet );
-		var content = scrub( entry.content )
+		var snippet = entry.contentSnippet.replace( "Redskins", name );
+//		var content = entry.content;
 		var link = entry.link;
-		
+
+                //look for Redskins in categories, if we don't find it, continue'
 		var catArray = entry.categories;
-		var catHTML = '<ul>';
-		for( var cat = 0; cat < catArray.length; cat++ )
-		{
-			catHTML += '<li>' + catArray[ cat ] + '</li>'
-		}
-		catHTML += '</ul>'
+                if( catArray.length > 0 )
+                {
+                    var foundRedskins = false;
+                    for( var currCat = 0; currCat < catArray.length; currCat++ )
+                    {
+			if( catArray[ currCat ] == "Redskins" )
+                            foundRedskins = true;
+                    }
+                    if( !foundRedskins )
+                        continue;
+                }
 		
 		var html = "<div class=\"entry\"><h2 class=\"postTitle\">" + title + "<\/h2>";
 		html += "<em class=\"date\">" + pubDate + "</em>";
-		//html += "<p class=\"description\">" + snippet + "</p>";
-		html += catHTML;
-		html += "<div class=\"expandable\" id=\"content\">" + content + "</div>";
-		html += "<a href=\"" + link + "\" target=\"_blank\">Go to site >><\/a><\/div>";
+		html += "<p class=\"description\">" + snippet + "</p>";
+//		html += "<div class=\"expandable\" id=\"content\">" + content + "</div>";
+//		html += "<a href=\"" + link + "\" target=\"_blank\">Go to site >><\/a><\/div>";
  
 		//put that feed content on the screen!
 		$('#feedContent').append($(html));
 	}
-  	
+
+        scrub( $('#feedContent')[ 0 ] );
   	// simple example, using all default options unless overridden globally
 /*	$('div.expandable').expander({
 	    slicePoint:       snippet.length,  // default is 100
@@ -82,17 +87,21 @@ function parseFeeds( feeds )
  */
 function scrub( toScrub )
 {
-	var clean = toScrub.replace( "Redskins", "*******" );
-	
-	if( toScrub.childNodes )
-	{
-		clean.childNodes = new Array();
-		for( var i = 0; i < toScrub.childNodes.length; i++ )
-		{
-			alert( "Scrubbing a child " + toScrub.childNodes[ i ] )
-			clean.childNodes[ i ] = scrub( toScrub.childNodes[ i ])
-		}
-		
-	}
-	return clean;
+    var inner = toScrub.innerHTML;
+    var before = inner;
+    if( inner )
+    {
+        toScrub.innerHTML.replace( "Redskins", "*******" );
+    }
+
+    if( toScrub.childNodes )
+    {
+        //clean.childNodes = new Array();
+        for( var i = 0; i < toScrub.childNodes.length; i++ )
+        {
+            scrub( toScrub.childNodes[ i ]);
+            //alert( "Scrubbing a child " + toScrub.childNodes[ i ] )
+            //clean.childNodes[ i ] = scrub( toScrub.childNodes[ i ])
+        }
+    }
 }
